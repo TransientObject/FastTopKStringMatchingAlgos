@@ -35,9 +35,7 @@ class TopKStringMatchesBnB(TopKStringMatchesCommon):
             for query_ngram in cl:
                 if (len(query) - ld > 0):
                     sl += self.trie[query_ngram][len(query) - ld]
-                    self.inverted_list_scanned += len(self.trie[query_ngram][len(query) - ld])
                 sl += self.trie[query_ngram][len(query) + ld]
-                self.inverted_list_scanned += len(self.trie[query_ngram][len(query) + ld])
             sl = list(set(sl))
 
             for str_id in sl:
@@ -48,9 +46,11 @@ class TopKStringMatchesBnB(TopKStringMatchesCommon):
                         if (frequency[str_id] == ttopk):
                             candidates.append(str_id)
 
+            self.inverted_list_scanned += len(candidates)
             for candidate in candidates:
-                topKMatchesIterVariant.append((candidate, self.minimumEditDistance(self.str_collection[candidate], query)))
-                topKMatches.append((candidate, self.minimumEditDistance(self.str_collection[candidate], query)))
+                ed = self.minimumEditDistance(self.str_collection[candidate], query)
+                topKMatchesIterVariant.append((candidate, ed))
+                topKMatches.append((candidate, ed))
 
             topKMatchesIterVariant = sorted(topKMatchesIterVariant, key=lambda x: x[1])[:self.kSize]
             topKMatches = sorted(topKMatches, key=lambda x: x[1])[:self.kSize]

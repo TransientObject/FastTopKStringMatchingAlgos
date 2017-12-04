@@ -29,10 +29,10 @@ class TopKStringMatchesNaive(TopKStringMatchesCommon):
 
             #key is present in dict
             sl = self.trie[query_ngram]
-            self.inverted_list_scanned += len(sl)
             for str_id in sl:
                 ngram_match_count[str_id][0] += 1
 
+        self.inverted_list_scanned = len(ngram_match_count.keys())
         for key, val in ngram_match_count.items():
             val[1] = self.minimumEditDistance(query, self.str_collection[key])
 
