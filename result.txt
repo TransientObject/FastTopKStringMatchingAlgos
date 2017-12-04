@@ -1,0 +1,69 @@
+function call -
+
+analyzer.compare_results(10, True)
+analyzer.compare_results(100, False)
+analyzer.compare_results(500, False)
+analyzer.compare_results(1000, False)
+analyzer.compare_results(1500, False)
+
+
+
+Result -
+
+
+Time taken to get Top-10 String Matches using Naive Method - 1.9921936988830566 seconds
+Size of Inverted lists scanned during the Naive process -  52199
+string		similarity score
+blunt     			0
+blent     			1
+bluet     			1
+blunk     			1
+blurt     			1
+lunt      			1
+brunt     			1
+bunt      			1
+abluent   			2
+blan      			2
+
+
+
+Time taken to get Top-10 String Matches using Branch And Bound Method - 0.12359857559204102 seconds
+Size of Inverted lists scanned during the Branch and Bound process -  3484
+string		similarity score
+blunt     			0
+brunt     			1
+blent     			1
+bluet     			1
+blunk     			1
+blurt     			1
+lunt      			1
+bunt      			1
+taunt     			2
+gaunt     			2
+
+
+
+
+
+Time taken to get Top-100 String Matches using Naive Method - 2.048201322555542 seconds
+Size of Inverted lists scanned during the Naive process -  52199
+Time taken to get Top-100 String Matches using Branch And Bound Method - 0.124114990234375 seconds
+Size of Inverted lists scanned during the Branch and Bound process -  3484
+
+
+Time taken to get Top-500 String Matches using Naive Method - 2.028873920440674 seconds
+Size of Inverted lists scanned during the Naive process -  52199
+Time taken to get Top-500 String Matches using Branch And Bound Method - 0.28375959396362305 seconds
+Size of Inverted lists scanned during the Branch and Bound process -  6432
+
+
+Time taken to get Top-1000 String Matches using Naive Method - 2.014220952987671 seconds
+Size of Inverted lists scanned during the Naive process -  52199
+Time taken to get Top-1000 String Matches using Branch And Bound Method - 0.5805561542510986 seconds
+Size of Inverted lists scanned during the Branch and Bound process -  11289
+
+
+Time taken to get Top-1500 String Matches using Naive Method - 2.0226287841796875 seconds
+Size of Inverted lists scanned during the Naive process -  52199
+Time taken to get Top-1500 String Matches using Branch And Bound Method - 0.5834705829620361 seconds
+Size of Inverted lists scanned during the Branch and Bound process -  11289
