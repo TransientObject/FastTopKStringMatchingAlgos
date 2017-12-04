@@ -29,7 +29,7 @@ class AlgoAnalyzer():
     def print_result(self, topKMatches):
         print("string\t\tsimilarity score")
         for tup in topKMatches:
-            print('{:10s}'.format(tup[0]) + "\t\t\t" + str(tup[1]))
+            print('{:10s}'.format(tup[0]) + "\t\t" + str(tup[1]))
 
         print("\n\n")
 
