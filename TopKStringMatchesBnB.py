@@ -35,7 +35,8 @@ class TopKStringMatchesBnB(TopKStringMatchesCommon):
             for query_ngram in cl:
                 if (len(query) - ld > 0):
                     sl += self.trie[query_ngram][len(query) - ld]
-                sl += self.trie[query_ngram][len(query) + ld]
+                if (len(query) + ld <= self.maxLength):
+                    sl += self.trie[query_ngram][len(query) + ld]
             sl = list(set(sl))
 
             for str_id in sl:
@@ -61,7 +62,5 @@ class TopKStringMatchesBnB(TopKStringMatchesCommon):
                 ttopk = max(ttopk, self.similiarityScore(query, self.str_collection[topKMatches[self.kSize-1][0]], topKMatches[self.kSize-1][1]))
 
             ld += 1
-            if (len(query) + ld > self.maxLength):
-                break
 
         return [(self.str_collection[key], val) for key, val in topKMatches]
