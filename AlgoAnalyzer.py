@@ -9,7 +9,7 @@ class AlgoAnalyzer():
 
     def compare_results(self, k, print_res=True):
         start = time.time()
-        topKMatches = self.naive_matcher.getTopKMatches("priya", k)
+        topKMatches = self.naive_matcher.getTopKMatches("theater", k)
         end = time.time()
         print("Time taken to get Top-{} String Matches using Naive Method - {} seconds".format(k, str(end - start)))
         print("Size of Inverted lists scanned during the Naive process - ", str(self.naive_matcher.inverted_list_scanned))
@@ -17,7 +17,7 @@ class AlgoAnalyzer():
             self.print_result(topKMatches)
 
         start = time.time()
-        topKMatches = self.bnb_matcher.getTopKMatches("priya", k)
+        topKMatches = self.bnb_matcher.getTopKMatches("theater", k)
         end = time.time()
         print("Time taken to get Top-{} String Matches using Branch And Bound Method - {} seconds".format(k, str(end - start)))
         print("Size of Inverted lists scanned during the Branch and Bound process - ", str(self.bnb_matcher.inverted_list_scanned))
