@@ -7,9 +7,9 @@ class AlgoAnalyzer():
         self.naive_matcher = TopKStringMatchesNaive(dictPath, 2, 2)
         self.bnb_matcher = TopKStringMatchesBnB(dictPath, 2, 2)
 
-    def compare_results(self, k, print_res=True):
+    def compare_results(self, queryString, k, print_res=True):
         start = time.time()
-        topKMatches = self.naive_matcher.getTopKMatches("theater", k)
+        topKMatches = self.naive_matcher.getTopKMatches(queryString, k)
         end = time.time()
         print("Time taken to get Top-{} String Matches using Naive Method - {} seconds".format(k, str(end - start)))
         print("Size of Inverted lists scanned during the Naive process - ", str(self.naive_matcher.inverted_list_scanned))
@@ -17,7 +17,7 @@ class AlgoAnalyzer():
             self.print_result(topKMatches)
 
         start = time.time()
-        topKMatches = self.bnb_matcher.getTopKMatches("theater", k)
+        topKMatches = self.bnb_matcher.getTopKMatches(queryString, k)
         end = time.time()
         print("Time taken to get Top-{} String Matches using Branch And Bound Method - {} seconds".format(k, str(end - start)))
         print("Size of Inverted lists scanned during the Branch and Bound process - ", str(self.bnb_matcher.inverted_list_scanned))
@@ -35,9 +35,10 @@ class AlgoAnalyzer():
 
 if __name__ == '__main__':
     dictPath = "./dict.txt"
+    var = str(input("Enter the query string: "))
     analyzer = AlgoAnalyzer(dictPath)
-    analyzer.compare_results(10, True)
-    analyzer.compare_results(100, False)
-    analyzer.compare_results(500, False)
-    analyzer.compare_results(1000, False)
-    analyzer.compare_results(1500, False)
+    analyzer.compare_results(var, 10, True)
+    analyzer.compare_results(var, 100, False)
+    analyzer.compare_results(var, 500, False)
+    analyzer.compare_results(var, 1000, False)
+    analyzer.compare_results(var, 1500, False)
